@@ -1,5 +1,6 @@
 using System;
 using Android.Webkit;
+using Microsoft.AspNetCore.Components.WebView.Maui.Android;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Maui;
@@ -8,6 +9,7 @@ using Microsoft.Maui.Handlers;
 using static Android.Views.ViewGroup;
 using AWebView = Android.Webkit.WebView;
 using Path = System.IO.Path;
+
 
 namespace Microsoft.AspNetCore.Components.WebView.Maui
 {
@@ -38,10 +40,20 @@ namespace Microsoft.AspNetCore.Components.WebView.Maui
 				blazorAndroidWebView.Settings.DomStorageEnabled = true;
 			}
 
-			_webViewClient = new WebKitWebViewClient(this);
+			var ser = Services?.GetService<IWebViewExCreator>();
+			if (ser == null)
+			{
+				_webViewClient = new WebKitWebViewClient(this);
+				_webChromeClient = new BlazorWebChromeClient();
+			}
+			else
+			{
+				_webViewClient = ser.GenWebViewClient(this)?? new WebKitWebViewClient(this);
+				_webChromeClient = ser.GenWebChromeClient(this) ?? new BlazorWebChromeClient();
+			}
+
 			blazorAndroidWebView.SetWebViewClient(_webViewClient);
 
-			_webChromeClient = new BlazorWebChromeClient();
 			blazorAndroidWebView.SetWebChromeClient(_webChromeClient);
 
 			return blazorAndroidWebView;

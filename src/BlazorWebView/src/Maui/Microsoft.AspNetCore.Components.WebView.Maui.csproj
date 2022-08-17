@@ -16,10 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\SharedSource\**\*.cs" Link="Windows\SharedSource\%(Filename)%(Extension)" />
+    <Compile Include="..\SharedSource\**\*.cs" Link="SharedSource\%(RecursiveDir)\%(Filename)%(Extension)" />
     <Compile Include="..\..\..\Core\src\TaskExtensions.cs" Link="Utilities\TaskExtensions.cs" />
   </ItemGroup>
 
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <PackageReference Include="Xamarin.AndroidX.WebKit" Version="1.4.0.8" />
+  </ItemGroup>
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authorization" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView" />

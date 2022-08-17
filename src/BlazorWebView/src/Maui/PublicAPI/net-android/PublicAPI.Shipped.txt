@@ -53,3 +53,18 @@ static Microsoft.Extensions.DependencyInjection.BlazorWebViewServiceCollectionEx
 static Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler.BlazorWebViewMapper -> Microsoft.Maui.PropertyMapper<Microsoft.AspNetCore.Components.WebView.Maui.IBlazorWebView!, Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler!>!
 virtual Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.CreateFileProvider(string! contentRootDir) -> Microsoft.Extensions.FileProviders.IFileProvider!
 ~Microsoft.AspNetCore.Components.WebView.BlazorWebViewInitializedEventArgs.WebView.get -> Android.Webkit.WebView
+
+Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient
+override Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebChromeClient.OnCreateWindow(Android.Webkit.WebView? view, bool isDialog, bool isUserGesture, Android.OS.Message? resultMsg) -> bool
+override Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebChromeClient.OnShowFileChooser(Android.Webkit.WebView? view, Android.Webkit.IValueCallback? filePathCallback, Android.Webkit.WebChromeClient.FileChooserParams? fileChooserParams) -> bool
+override Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient.Dispose(bool disposing) -> void
+Microsoft.AspNetCore.Components.WebView.Maui.Android.IWebViewExCreator
+Microsoft.AspNetCore.Components.WebView.Maui.Android.IWebViewExCreator.GenWebChromeClient(Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler! handler) -> Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebChromeClient!
+Microsoft.AspNetCore.Components.WebView.Maui.Android.IWebViewExCreator.GenWebViewClient(Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler! handler) -> Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient!
+Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebChromeClient
+Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebChromeClient.BlazorWebChromeClient() -> void
+override Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient.OnPageFinished(Android.Webkit.WebView? view, string? url) -> void
+override Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient.ShouldInterceptRequest(Android.Webkit.WebView? view, Android.Webkit.IWebResourceRequest? request) -> Android.Webkit.WebResourceResponse?
+override Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient.ShouldOverrideUrlLoading(Android.Webkit.WebView? view, Android.Webkit.IWebResourceRequest? request) -> bool
+Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient.WebKitWebViewClient(System.IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) -> void
+Microsoft.AspNetCore.Components.WebView.Maui.WebKitWebViewClient.WebKitWebViewClient(Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler! webViewHandler) -> void

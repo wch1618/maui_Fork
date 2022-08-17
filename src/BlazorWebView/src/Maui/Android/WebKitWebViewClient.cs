@@ -4,12 +4,13 @@ using Android.Content;
 using Android.Runtime;
 using Android.Webkit;
 using Java.Net;
+using Microsoft.AspNetCore.Components.WebView;
 using AWebView = Android.Webkit.WebView;
 
 namespace Microsoft.AspNetCore.Components.WebView.Maui
 {
-	[SupportedOSPlatform("android23.0")]
-	internal class WebKitWebViewClient : WebViewClient
+	[SupportedOSPlatform("android21.0")]
+	public class WebKitWebViewClient : WebViewClient
 	{
 		// Using an IP address means that WebView doesn't wait for any DNS resolution,
 		// making it substantially faster. Note that this isn't real HTTP traffic, since
